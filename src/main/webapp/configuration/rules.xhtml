@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+		<p:tabView id="tabView">
+
+			<p:tab id="tab1" title="Enable/Disable Rules">
+				<p:dataTable var="car" value="asd">
+					<p:column headerText="Rule">
+						<h:outputText value="asd" />
+					</p:column>
+
+					<p:column headerText="Enabled">
+						<h:outputText value="asdasd" />
+					</p:column>
+				</p:dataTable>
+			</p:tab>
+
+			<p:tab id="tab2" title="Assign to Users">
+				<h3>Assign Rules to Users</h3>
+				<p:pickList id="usersRolesPickList" value="#{pickListBean.cities}"
+					var="city" itemLabel="#{city}" itemValue="#{city}" />
+				<p:commandButton id="citySubmit" value="Submit" />
+			</p:tab>
+
+			<p:tab id="tab3" title="Assign to Groups">
+				<h3>Assign Rules to Groups</h3>
+				<p:pickList id="usersRolesPickList2" value="#{pickListBean.cities}"
+					var="city" itemLabel="#{city}" itemValue="#{city}" />
+				<p:commandButton id="citySubmit2" value="Submit" />
+			</p:tab>
+
+		</p:tabView>
+
+	</h:form>
+
+
+</ui:composition>

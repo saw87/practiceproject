@@ -1,0 +1,29 @@
+/*********** override primefaces css ************/
+/* allow menu from left panel to overflow into content panel */
+.ui-layout-west {
+	z-index: 40 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-west .ui-layout-unit-content {
+	overflow: visible !important;
+}
+
+/* small left margin in content panel */
+.ui-layout-center .ui-layout-unit-content {
+	margin-left: 10px;
+}
+
+.ui-growl {
+	position: fixed;
+	top: 80%;
+	left: 45%;
+	width: 360px;
+	height: 110px;
+	z-index: 9999;
+}
+
+/***********************************************/
+.centered {
+	margin: auto;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Application - Logged in</title>
+	<f:facet name="last">
+		<h:outputStylesheet library="css" name="main.css" />
+	</f:facet>
+</h:head>
+<h:body>
+	<f:view contentType="text/html">
+		<p:layout fullPage="true">
+
+			<p:layoutUnit position="north" size="100">
+				<h:outputText value="North unit content." />
+			</p:layoutUnit>
+
+			<p:layoutUnit position="west" size="200" header="Navigate">
+				<h:form>
+					<p:tree value="#{userAccessBean.root}" id="tr" var="node" dynamic="true"
+						cache="true" selectionMode="single" expanded="true"
+						selection="#{userAccessBean.selectedNode}" style="width:192px">
+						
+						<p:ajax event="select" update=":content" listener="#{userAccessBean.onNodeSelect}" />
+						
+						<p:treeNode>
+							<h:outputText value="#{node.label}" />
+						</p:treeNode>
+					</p:tree>
+				</h:form>
+
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center">
+				<p:growl id="messages" />
+
+				<h:panelGroup id="content" layout="block">
+					<ui:include src="#{userAccessBean.page}" />
+				</h:panelGroup>
+			</p:layoutUnit>
+
+		</p:layout>
+
+	</f:view>
+</h:body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Application</title>
+	<f:facet name="last">
+		<h:outputStylesheet library="css" name="main.css" />
+	</f:facet>
+</h:head>
+<h:body>
+	<f:view contentType="text/html">
+		<h:form>
+			<p:panel id="panel" header="Login" style="width:250px;" styleClass="centered">
+				<h:panelGrid columns="2">
+					<p:outputLabel for="username" value="User:" />
+					<p:inputText id="username" value="sam"/>
+				</h:panelGrid>
+				 <p:commandButton value="Login" action="#{userAccessBean.login(username.value)}" ajax="false" />
+			</p:panel>
+		</h:form>
+	</f:view>
+</h:body>
+</html>

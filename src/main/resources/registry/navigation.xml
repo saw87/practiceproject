@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menu pAlias="all">
+	<submenu pAlias="p_all1" label="submenu1">
+		<item pAlias="p1" label="item1" resource="/configuration/groups.xhtml"/>
+		<item pAlias="p2" label="item2" resource="/configuration/rules.xhtml"/>
+	</submenu>
+	
+	<submenu pAlias="p_all2" label="submenu2">
+		<submenu pAlias="p_sub1" label="sub1">
+			<item pAlias="p3" label="item3" resource="configuration.xhtml"/>
+			<item pAlias="p4" label="item4" resource="configuration.xhtml"/>
+		</submenu>	
+		<submenu pAlias="p_sub2" label="sub2">
+			<item pAlias="p5" label="item5" resource="configuration.xhtml"/>
+			<item pAlias="p6" label="item6" resource="configuration.xhtml"/>
+		</submenu>	
+	</submenu>
+	<item pAlias="p7" label="item7" resource="configuration.xhtml"/>
+</menu>
