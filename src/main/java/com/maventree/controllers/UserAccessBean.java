@@ -1,7 +1,5 @@
 package com.maventree.controllers;
 
-import java.util.Collection;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -9,19 +7,18 @@ import org.primefaces.event.NodeSelectEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 
-import com.maventree.entities.business_logic.user_access.Privilege;
-import com.maventree.entities.business_logic.user_access.User;
+import com.maventree.entities.business_logic.User;
 import com.maventree.global.Registry;
-import com.maventree.global.registry_util.NavMenuItem;
-import com.maventree.global.registry_util.RegistryTreeNode;
 import com.maventree.services.UserAccessService;
-import com.maventree.services.impl.MockUserAccessService;
+import com.maventree.services.impl.user_access_service.DefaultUserAccessService;
+import com.maventree.services.util.navigation_service.NavMenuItem;
+import com.maventree.services.util.navigation_service.RegistryTreeNode;
 
 @ManagedBean
 @SessionScoped
 public class UserAccessBean {
 
-	private UserAccessService userAccessService = new MockUserAccessService();
+	private UserAccessService userAccessService = Registry.getDefaultUserAccessService();
 	
 	private TreeNode root;
 	private TreeNode selectedNode;
@@ -29,11 +26,9 @@ public class UserAccessBean {
 
 	public String login(String username) {
 		User u = new User();
-		u.setUsername(username);
-		
-		Collection<Privilege> privileges = userAccessService.getAllUserPrivileges(u);
-		RegistryTreeNode userNavigationTreeRoot = Registry.getUserNavigationTree(privileges);
-		buildTreeMenu(userNavigationTreeRoot);
+		u.setUsername("sam");
+		userAccessService.getAllUserPrivileges(u);
+		buildTreeMenu(userAccessService.getUserNavigation(u));
 		return "main";
 	}
 	

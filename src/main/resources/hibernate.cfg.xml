@@ -26,12 +26,13 @@
 		<property name="show_sql">true</property>
 		
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hbm2ddl.auto">create</property>
-		
-		<mapping class="com.maventree.entities.business_logic.user_access.Group"/>
-		<mapping class="com.maventree.entities.business_logic.user_access.User"/>
-		<mapping class="com.maventree.entities.business_logic.user_access.Role"/>
-		<mapping class="com.maventree.entities.business_logic.user_access.Privilege"/>
+		<property name="hbm2ddl.auto">update</property>
+
+		<mapping class="com.maventree.entities.business_logic.ResourceEntity"/>
+		<mapping class="com.maventree.entities.business_logic.User"/>
+		<mapping class="com.maventree.entities.business_logic.Privilege"/>
+		<mapping class="com.maventree.entities.business_logic.Role"/>
+		<mapping class="com.maventree.entities.business_logic.Navigation"/>
 		
 	</session-factory>
 </hibernate-configuration>

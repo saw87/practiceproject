@@ -1,4 +1,4 @@
-package com.maventree.global.registry_util;
+package com.maventree.services.util.navigation_service;
 
 import java.util.ArrayList;
 import java.util.List;

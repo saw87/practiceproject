@@ -4,21 +4,23 @@ package com.maventree.entities.business_logic;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.Type;
 
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class AbstractEntity implements Serializable {
+@Entity
+@Table(name = "RESOURCES")
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class ResourceEntity implements Serializable {
 	
-	@Id @GeneratedValue(strategy = GenerationType.TABLE)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Version
@@ -29,6 +31,29 @@ public abstract class AbstractEntity implements Serializable {
 	private Boolean enabled;
 	
 	private String value;
+	
+	private String resourceType;
+	
+
+	public ResourceEntity() {
+		resourceType = this.getClass().getSimpleName();
+	}
+	
+	public Boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public String getResourceType() {
+		return resourceType;
+	}
+
+	public void setResourceType(String resourceType) {
+		this.resourceType = resourceType;
+	}
 
 	public String getValue() {
 		return value;
@@ -52,14 +77,6 @@ public abstract class AbstractEntity implements Serializable {
 
 	public void setVersion(Integer version) {
 		this.version = version;
-	}
-
-	public Boolean getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
 	}
 	
 	

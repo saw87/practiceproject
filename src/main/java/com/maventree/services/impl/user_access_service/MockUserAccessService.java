@@ -1,18 +1,24 @@
-package com.maventree.services.impl;
+package com.maventree.services.impl.user_access_service;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.hibernate.Session;
 
-import com.maventree.entities.business_logic.user_access.Group;
-import com.maventree.entities.business_logic.user_access.Privilege;
-import com.maventree.entities.business_logic.user_access.Role;
-import com.maventree.entities.business_logic.user_access.User;
+import com.maventree.entities.business_logic.Privilege;
+import com.maventree.entities.business_logic.Role;
+import com.maventree.entities.business_logic.User;
 import com.maventree.services.UserAccessService;
+import com.maventree.services.util.navigation_service.RegistryTreeNode;
 import com.maventree.util.HUtil;
 
 public class MockUserAccessService implements UserAccessService {
+	
+	@Override
+	public RegistryTreeNode getUserNavigation(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	@Override
 	public Collection<Privilege> getAllUserPrivileges(User user) {
@@ -37,11 +43,7 @@ public class MockUserAccessService implements UserAccessService {
 	public Collection<Privilege> getUserPrivileges(User exampleUser) {
 		return null;
 	}
-	
-	@Override
-	public Collection<Privilege> getGroupPrivileges(Group exampleGroup) {
-		return null;
-	}
+
 	
 	@Override
 	public Collection<Privilege> getRolePrivileges(Role exampleRole) {
@@ -54,17 +56,6 @@ public class MockUserAccessService implements UserAccessService {
 		session.beginTransaction();
 		
 		session.save(user);
-		
-		session.getTransaction().commit();
-		session.close();
-	}
-	
-	@Override
-	public void addGroup(Group group) {
-		Session session = HUtil.getOpenSession();	
-		session.beginTransaction();
-		
-		session.save(group);
 		
 		session.getTransaction().commit();
 		session.close();
@@ -91,5 +82,7 @@ public class MockUserAccessService implements UserAccessService {
 		session.getTransaction().commit();
 		session.close();
 	}
+
+	
 	
 }
